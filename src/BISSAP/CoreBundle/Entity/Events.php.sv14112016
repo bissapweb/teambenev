@@ -1,0 +1,221 @@
+<?php
+
+namespace BISSAP\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Events
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="BISSAP\CoreBundle\Entity\EventsRepository")
+ */
+class Events
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * 
+     * @ORM\ManyToOne(targetEntity="TypeEvents", inversedBy="events", cascade={"persist"})
+     *
+     */
+    private $typeEvents;
+    
+    /**
+     * 
+     * @ORM\ManyToOne(targetEntity="GenreEvents", inversedBy="events", cascade={"persist"})
+     *
+     */
+    private $genreEvents;
+
+    /**
+     * 
+     * @ORM\ManyToOne(targetEntity="BISSAP\UserBundle\Entity\User", inversedBy="events", cascade={"persist"})
+     *
+     */
+    private $user;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NameEvent", type="string", length=18)
+     */
+    private $nameEvent;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NameOrga", type="string", length=255)
+     */
+    private $nameOrga;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="text")
+     */
+    private $description;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nameEvent
+     *
+     * @param string $nameEvent
+     *
+     * @return Events
+     */
+    public function setNameEvent($nameEvent)
+    {
+        $this->nameEvent = $nameEvent;
+
+        return $this;
+    }
+
+    /**
+     * Get nameEvent
+     *
+     * @return string
+     */
+    public function getNameEvent()
+    {
+        return $this->nameEvent;
+    }
+
+    /**
+     * Set nameOrga
+     *
+     * @param string $nameOrga
+     *
+     * @return Events
+     */
+    public function setNameOrga($nameOrga)
+    {
+        $this->nameOrga = $nameOrga;
+
+        return $this;
+    }
+
+    /**
+     * Get nameOrga
+     *
+     * @return string
+     */
+    public function getNameOrga()
+    {
+        return $this->nameOrga;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Events
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+
+    /**
+     * Set typeEvents
+     *
+     * @param \BISSAP\CoreBundle\Entity\TypeEvents $typeEvents
+     *
+     * @return Events
+     */
+    public function setTypeEvents(\BISSAP\CoreBundle\Entity\TypeEvents $typeEvents = null)
+    {
+        $this->typeEvents = $typeEvents;
+
+        return $this;
+    }
+
+    /**
+     * Get typeEvents
+     *
+     * @return \BISSAP\CoreBundle\Entity\TypeEvents
+     */
+    public function getTypeEvents()
+    {
+        return $this->typeEvents;
+    }
+
+    /**
+     * Set genreEvents
+     *
+     * @param \BISSAP\CoreBundle\Entity\GenreEvents $genreEvents
+     *
+     * @return Events
+     */
+    public function setGenreEvents(\BISSAP\CoreBundle\Entity\GenreEvents $genreEvents = null)
+    {
+        $this->genreEvents = $genreEvents;
+
+        return $this;
+    }
+
+    /**
+     * Get genreEvents
+     *
+     * @return \BISSAP\CoreBundle\Entity\GenreEvents
+     */
+    public function getGenreEvents()
+    {
+        return $this->genreEvents;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \BISSAP\UserBundle\Entity\User $user
+     *
+     * @return Events
+     */
+    public function setUser(\BISSAP\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \BISSAP\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+}

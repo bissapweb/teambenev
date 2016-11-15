@@ -1,0 +1,217 @@
+
+{% block body -%}
+    <h1 class="profil_item">PROFIL</h1>
+{# Add ajax thingie that will update the city select box #}
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+    //var deps = new Array();
+    var deps = {items: []};
+    var dataReturn = "";
+    
+(function(){
+ 		$.ajax({
+				type: "POST",
+				url: "{{ url('load_deps_ajax_call') }}",
+                async:false,
+				success: function(data) {
+                    if ( data.length != 0 ){
+					   fillArrayDeps_2(data);
+					}
+                if(isNotEmpty(deps.items) === true){                       
+                    $('#buttonSup').show();
+                }
+                    fillSpan();
+
+				}
+			});
+
+ 		    //$('#buttonDep').hide();
+ 		    //if ((isNotEmpty(deps.items) === false) or (isNotEmpty(deps) === false)) { 
+
+
+ 	})();
+
+
+ 	function fillArrayDeps_1(){
+
+    		$(".checkDep:checkbox:checked").each(function(){
+				   deps.items.push({id: $(this).val(), name: $(this).next('span').text() });
+			});
+
+ 	};
+
+    function fillArrayDeps_2(data_1){
+
+                   $.each(data_1, function(k, v) {
+				   deps.items.push({id: v, name: k });
+
+			});
+
+ 	};
+
+ 	function fillSpan(){
+ 		$('#departementTable').html("");
+ 			$.each(deps.items, function ( index, name ){
+ 				$('#departementTable').append('<tr><td><span>'+ name.name +'</span></td></tr>');
+ 		});
+ 	};
+ 	function emptySpanAndBox(){
+ 		 		$('#departementTable').html("");
+ 		 		deps = {items: []};
+ 		 		$('#bissap_userbundle_user_departements').html('');
+ 		 		$("#bissap_userbundle_user_regions").val("").change();
+
+ 	};
+
+ 	function search(Key, myArray){
+    	for (var i=0; i < myArray.length; i++) {
+    		//alert(Key);
+        	if (myArray[i].id == Key) {
+        		
+            	return true;
+        	}
+    	}
+	};
+
+	function isNotEmpty(obj) {
+    	for(var prop in obj) {
+        	if(obj.hasOwnProperty(prop))
+            	return true;
+    	}
+
+    	return false;
+	}
+
+
+ 	function radioCheckBox(data){
+
+ 		// Remove current options
+
+                    $('#bissap_userbundle_user_departements').html('');
+                    $.each(data, function(k, v) {
+                    	//
+                    	if (isNotEmpty(deps)) { 			        	
+                    		var resultObject = search(v, deps.items);
+                    	}//pour affichage en fonction des departement stocké dans le tableau 			        			
+                    	if(resultObject !== true) {
+                    	$('#bissap_userbundle_user_departements').append('<input type="checkbox" class="checkDep" name="bissap_userbundle_user[departements][]" value="' + v + '" id="bissap_userbundle_user_departements_'+ v +'"><span>' + k + '</span></input><br />');
+
+                    	}
+
+                    });
+                    $('#buttonDep').show();
+
+ 	};
+
+
+ 	 		$('#buttonDep').click(function(){
+        		fillArrayDeps_1();
+        		fillSpan();
+        		radioCheckBox(dataReturn);
+        		$('#buttonSup').show();
+
+			});
+
+			$('#buttonSup').click(function(){
+        		emptySpanAndBox();
+        	$('#buttonSup').hide();
+
+			});
+
+$('form').on('submit', function(e){
+    // validation code here
+    
+    $.ajax({
+				type: "POST",
+				url: "{{ url('submit_ajax_call') }}",
+				data: JSON.stringify(deps),
+				dataType: "html",
+                async:false,
+
+				success: function(data) {
+										// console.log("test_ajax");
+                    deps = {items: []};
+
+				}
+			});
+
+      //e.preventDefault();
+
+  });
+
+        $('#bissap_userbundle_user_regions').change(function(){
+           var val = $(this).val();
+           $.ajax({
+                type: "POST",
+                url: "{{ url('region_ajax_call') }}?regions_id=" + val,
+                async:false,
+                success: function(data) {
+                	dataReturn = data;
+                	//alert (dataReturn);
+                    radioCheckBox(data);
+                }
+            });
+            return false;
+        });
+    });
+</script>
+
+{% if app.user %}
+    <form id ="formProfil" name="bissap_userbundle_user" method="post" action="{{ path('user_update', {'id': app.user.id }) }}">
+{% else %}
+    <form id ="formProfil" name="bissap_userbundle_user" method="post" action="{{ path('bissap_coreBundle_index') }}">
+{% endif %}
+    	<input name="_method" value="PUT" type="hidden">
+    	<div id="bissap_userbundle_user">
+    		<div class="form-group">                
+    			<label for="bissap_userbundle_user_email" class="required">Email</label>
+    			<input class="form-control" id="bissap_userbundle_user_email" name="bissap_userbundle_user[email]" required="required" maxlength="254" pattern=".{2,}" value="{{ entity.email }}" type="email">
+    		</div>
+		    <div class="form-group">                
+		   		<label for="bissap_userbundle_user_tel" class="required">Tél</label>
+		    	<input class="form-control" id="bissap_userbundle_user_tel" value="{{ entity.tel }}" name="bissap_userbundle_user[tel]" maxlength="20" type="text">
+		    </div>
+		    <div class="form-group">                
+		    	<label for="bissap_userbundle_user_presentation" class="required">Presentation</label>
+		    	<textarea class="form-control" id="bissap_userbundle_user_presentation"  name="bissap_userbundle_user[presentation]">{{ entity.presentation }}
+		    	</textarea>
+		    </div>
+	    	
+									{{ form_widget(edit_form._token) }}
+    	</div>
+    	<div class="barre"></div>
+    	<div id="mobility_item">Mobilité géographique</div>
+    	<div id="listRegions">{{ form_widget(edit_form.regions) }}</div>
+    	<div class="parent">
+    		<div class="transform" id="listDeps">{{ form_widget(edit_form.departements) }}</div>
+    		<div class="transform vertical-aligne"><input style="display: none;" class="" type="button" id="buttonDep" value=">>"/></div>
+    		<div class="transform" id="zoneDeps">
+    			<table id="departementTable">
+				</table>
+    		</div>
+    		<div class="transform"><input type="button" style="display: none;" id="buttonSup" value="X"/></div>
+    	</div>
+        <div class="barre"></div>
+        <div id="events_item">Evenements recherchés</div>
+        <div id="events">{{ form_widget(edit_form.typeE) }}</div>
+        <div id="events">{{ form_widget(edit_form.genreE) }}</div>
+
+
+    	<div class="barre"></div>
+
+    	<div class="form-group" style="text-align: center">
+	    		<button type="submit" id="bissap_userbundle_user_submit" name="bissap_userbundle_user[submit]">Valider</button>
+	    	</div>
+
+
+    </form>
+            
+
+
+
+{% endblock %}

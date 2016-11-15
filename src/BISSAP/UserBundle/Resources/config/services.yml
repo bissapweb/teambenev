@@ -1,0 +1,22 @@
+# app/config/services.yml
+services:
+    bissap.form.registration:
+        class: BISSAP\UserBundle\Form\Type\RegistrationFormType
+        arguments: [ %fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: bissap_user_registration }
+
+    app.form.registration:
+        class: BISSAP\UserBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: app_user_registration }
+
+    app_user.registration_complet:
+       class: BISSAP\UserBundle\EventListener\RegistrationConfirmListener
+       arguments: ['@router', '@security.context', '@doctrine']
+       tags:
+           - { name: kernel.event_subscriber }
+
+    my_user_provider:
+        class: BISSAP\UserBundle\Security\User\FOSUBUserProvider
+        arguments: [@fos_user.user_manager,{facebook: facebook_id}]

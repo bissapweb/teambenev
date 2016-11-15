@@ -1,0 +1,123 @@
+{% extends '::layout.html.twig' %}
+
+{% block body %}
+    <div class="profil_item" >LISTE DES BENEVOLES</div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+     <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.js') }}"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+    
+$('form').on('submit', function(e){
+    // validation code here
+    e.preventDefault();
+    var route = "" ;
+    var type = $('#select_type').val();
+    var genre = $('#select_genre').val();
+    var dep = $('#select_dep').val();
+
+
+    route = "{{ url('bissap_orgaBundle_index') }}".concat('/').concat(type).concat('/').concat(genre).concat('/').concat(dep);
+           window.location.href = route;
+
+  });
+
+    $("table tr").on('click', function(){
+     presentation = $(this).attr('data-presentation');
+ 
+        $('#modalPresentation').modal('show');
+        $('#presentation_user').html(presentation);   });
+});
+</script>
+<div class="select_benev">
+    <form id ="formOrga" name="bissap_userbundle_list" method="post" action="{{ path('bissap_orgaBundle_index') }}">
+                    <span class="item_select">Type :</span><select name="select_type" id="select_type">
+
+                        <option selected="selected" value="Tous">---</option>
+                        <option value="Festival">Festival</option>
+                        <option value="Concert">Concert</option>
+                            
+                    </select>
+                    <span class="item_select">Genre :</span><select name="select_genre" id="select_genre">
+
+                        <option selected="selected" value="Tous">---</option>
+                        <option value="Rock">Rock</option>
+                        <option value="Techno">Techno</option>
+                        <option value="Jazz">Jazz</option>
+                        <option value="Raggea">Raggea</option>
+                        <option value="Metal">Metal</option>
+                            
+                    </select>
+                    <span class="item_select">Département :</span><select name="select_dep" id="select_dep">
+
+                        <option selected="selected" value="Tous">---</option>
+                        <option value="1">Bas-Rhin</option>
+                        <option value="2">Haut-Rhin</option>
+                        <option value="3">Dordogne</option>
+                        <option value="26">Drome</option>
+                            
+                    </select>
+                    <button type="submit" id="bissap_userbundle_orga_submit" name="bissap_userbundle_orga[submit]">Valider</button>
+    </form>
+</div>
+
+<div class="items_liste_benev">
+    {% if app.request.get('type') == 'Tous' %}
+        Festival et Concert  
+    {% else %}
+        {{ app.request.get('type') }}
+    {% endif %}
+
+    {% if app.request.get('genre') == 'Tous' %}
+        tout genre, 
+    {% else %}
+        {{ app.request.get('genre') }}
+    {% endif %}
+
+    {% if app.request.get('dep') == 'Tous' %}
+        tout departement 
+    {% else %}
+        departement du : {{ app.request.get('dep') }}
+    {% endif %}
+
+</div>
+    
+<div class="table-responsive">
+    <table class="table records_list table-inverse">
+    <tr class="tr_table">
+    {# sorting of properties based on query components #}
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Tel</th>
+        <th>H/F</th>
+    </tr>
+
+    {# table body #}
+    {% for entity in pagination %}
+    <tr id="{{ entity.id}}" data-presentation="{{ entity.presentation}}"{% if loop.index is odd %}class="color"{% endif %}>
+        <td>{{ entity.username }}</td>
+        <td>{{ entity.email }}</td>
+        <td>{{ entity.tel }}</td>
+        <td>{{ entity.sex }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+</div>
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+<!-- Modal de presentation -->
+    
+        <div class="modal fade" id="modalPresentation" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-presentation" role="document">
+                <div class="modal-content modal-content-presentation">
+                    <div id="presentation_user">ici presentation</div>
+                    
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}

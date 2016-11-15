@@ -1,0 +1,48 @@
+
+
+
+{% block body %}
+
+        <link rel="stylesheet"
+            href="{{ asset('assets/vendor/bootstrap/main_v1.css') }}">
+        <link rel="stylesheet"
+            href="{{ asset('bundles/bissapcore/css/main-teamBenev.css') }}">
+  {% if error %}
+
+    <div class="alert alert-danger">{{ error.message }}</div>
+
+  {% endif %}
+
+
+  {# Le formulaire, avec URL de soumission vers la route « login_check » comme on l'a vu #}
+<div class="padding_loginOrga">
+<ul class="">
+            
+            <li class="li_register"></li>
+            <li class="formLogin__column">
+	<div class="">
+		<div class=""></div>
+		<div class="">
+			<form  class="" action="{{ path('fos_orga_security_check') }}" method="post">
+		  		<div class="form-group">
+		    		<label class="control-label required" for="username">Login :</label>
+
+		    		<input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" />
+				</div>
+		  <div class="form-group">
+		    <label class="control-label required" for="password">Mot de passe :</label>
+
+		    	<input class="form-control" type="password" id="password" name="_password" />
+		</div>
+		    <br />
+
+		    <div class="center"><input type="submit" class="loginbox__submit bc-btn btn" value="Connexion" /></div>
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+			</form>
+		</div>
+    	</li>
+    </div>		
+</div>
+
+{% endblock %} 
+

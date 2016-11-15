@@ -1,0 +1,4 @@
+bissap_orgaBundle_index:
+    path:     /orga/index/{type}/{genre}/{dep}
+    host:     www.orga.teambenev.local
+    defaults: { _controller: BISSAPUserBundle:User:index, type:"Tous", genre:"Tous", dep:"Tous"  }

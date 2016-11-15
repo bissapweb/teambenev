@@ -1,0 +1,45 @@
+user:
+    path:     /
+    defaults: { _controller: "BISSAPUserBundle:User:index" }
+
+user_show:
+    path:     /{id}/show
+    defaults: { _controller: "BISSAPUserBundle:User:show" }
+
+user_new:
+    path:     /new
+    defaults: { _controller: "BISSAPUserBundle:User:new" }
+
+user_create:
+    path:     /create
+    defaults: { _controller: "BISSAPUserBundle:User:create" }
+    methods:  POST
+
+user_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BISSAPUserBundle:User:edit" }
+
+user_update:
+    path:     /{id}/update
+    defaults: { _controller: "BISSAPUserBundle:User:update" }
+    methods:  [POST, PUT]
+
+user_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BISSAPUserBundle:User:delete" }
+
+
+region_ajax_call:
+    path:     /ajax
+    defaults: { _controller: "BISSAPUserBundle:User:ajaxUser" }
+    methods:  POST|GET
+
+submit_ajax_call:
+    path:     /ajaxSubmit
+    defaults: { _controller: "BISSAPUserBundle:User:ajaxSubmit" }
+    methods:  POST|GET
+
+load_deps_ajax_call:
+    path:     /ajaxLoad
+    defaults: { _controller: "BISSAPUserBundle:User:ajaxLoad" }
+    methods:  POST|GET

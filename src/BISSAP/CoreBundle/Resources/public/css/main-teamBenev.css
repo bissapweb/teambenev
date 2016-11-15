@@ -1,0 +1,420 @@
+.facebook-btn{
+	margin-top: 0px;
+	margin-bottom: 14px;
+	width: 100%;
+	text-decoration: none;
+	display: inline-block;
+
+	line-height: normal;
+	vertical-align: middle;
+	border: medium none;
+	box-sizing: border-box;
+
+	background-color: #293381;
+	border-width: 1px 1px 3px;
+	border-style: solid;
+	border-color: transparent transparent #1D1F51;
+	-moz-border-top-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	border-image: none;
+	position: relative;
+}
+.tb-btn {
+	padding: 10px;
+	color: #DECBCB !important;
+	font-family: "Source Sans Pro",sans-serif;
+	font-size: 14px;
+	cursor: pointer;
+	text-align: center;
+	text-overflow: ellipsis;
+	/*margin-left: 200px;*/
+}
+
+ul{
+	list-style-type:none;
+}
+
+.ul__register{
+	margin-right: 35px;
+}
+
+.formRegister{
+	margin-top: 30px;
+	background-color: rgb(84, 84, 84);
+	max-width: 500px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin:auto;
+}
+.li_register{
+	text-align: center !important;
+	margin-top: 30px;
+}
+
+#fos_user_registration_form_sex_1{
+	margin-left: 10px;
+}
+
+.padding_login{
+	padding: 35px 30px 15px 0px; 
+}
+
+#bissap_userbundle_user{
+	padding: 30px;
+}
+
+.profil_item{
+	text-align: center;
+	font-family: "daniel", serif;
+	font-size: 30px;
+	text-shadow: 2px 2px 2px #CA9270;
+
+}
+.center{
+	text-align: center;
+}
+
+.transform{
+	display: inline-block;
+}
+
+#zoneDeps{
+	min-width: 50px;
+}
+
+.vertical-aligne{
+vertical-align:middle;
+text-align: center;
+display: table-cell;
+min-width: 50px;
+}
+
+#listDeps{
+	min-width: 160px;
+}
+
+.hidden{
+	display: none;
+}
+
+.barre {
+
+height:1px;
+
+background-color:#000;
+
+width:100%;
+
+text-align: center;
+margin-bottom: 10px;
+
+}
+
+.control-label{
+	font-family: Tahoma, sans-serif;
+}
+.required{
+	font-style: italic;
+	color: #C0C2CB;
+}
+#bissap_userbundle_user_typeE{
+	margin-bottom: 20px;
+}
+
+#mobility_item, #events_item{
+	text-align: center;
+	font-family: Tahoma, sans-serif;
+	margin-bottom: 15px;
+	color: #C0C2CB;
+}
+
+#listRegions{
+	margin-bottom:10px;
+	margin-left: 10px; 
+}
+
+.registerbox__submit,.loginbox__submit,.required{
+	font-family: Tahoma, sans-serif;
+}
+#fos_user_registration_form_sex{
+	text-align: center;
+}
+
+#departementTable{
+	font-family: Tahoma, sans-serif;
+	position: relative;
+	/*text-align: center;*/
+	font-style: italic;
+	font-size: 12px;
+	font-weight: bold;
+	color: #E99270;
+}
+
+.parent{ 
+	display: table;
+	margin-bottom: 30px;
+	margin-left: 10px;
+}
+.parent > div:not(.vertical-aligne) {display: table-cell; width:50%; }
+
+@font-face
+{
+	font-family: "inscription_connexion";
+	src:url("../fonts/ethnocentric rg.ttf");
+}
+
+@font-face
+{
+	font-family: "daniel";
+	src:url("../fonts/DANIEL-Italic.ttf");
+}
+
+.inscription_connexion, .profil{
+	font-family: "daniel", serif;
+  	text-align: center;
+	height: auto;
+	width: auto;
+	font-size: 16px;
+	padding-left: 20%;
+	padding-right: 20%;
+	padding-bottom: 20%;
+}
+
+.profil{
+	margin-top: 150px;
+}
+
+[class*="col-"], footer {
+
+  background-color: lightgreen;
+
+  border: 2px solid black;
+
+  border-radius: 6px;
+
+  line-height: 40px;
+
+  text-align: center;
+
+}
+
+.div_profil, .div_inscription, .div_connexion{
+	box-shadow: 0 0 5px #9b885e,0 0 5px #9b885e,0 0 5px #9b885e;
+	border-radius: 90px/20px;
+	z-index: -1;
+	transition: all 0.5s ease-in;
+}
+.div_profil:hover, .div_inscription:hover, .div_connexion:hover{
+		box-shadow: 0 5px 15px #9b885e,0 5px 15px #9b885e,0 5px 15px #9b885e;
+		opacity: 0.95;
+
+}
+
+.div_connexion, .div_inscription, .div_profil{
+	border: 1px;
+	border-color: #CA9270;
+	border-style: solid;
+	/*padding: 20px;*/
+/*	margin-left: 10%;
+	margin-right: 10%;*/
+	margin-bottom: 30px;
+	margin-top: 30px;
+	font-size: 5vw;
+	min-height: 40px;
+	min-width: 40px;
+	height: auto;
+	background-color: #2741D2;;
+	opacity: 0.8;
+	border-radius: 10px;
+	color: #F98C21;
+	transition: all 0.5s ease-in;
+	letter-spacing: 3px;
+
+}
+
+body{
+	background-image: url("../images/public3.jpg");
+	/*background-position: ;*/
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-color: #5C6163;
+	    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+	/*height:120%;*/
+}
+
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+  padding: 10px;
+  margin:8px;
+}
+
+a:link 
+{ 
+ text-decoration:none; 
+} 
+
+#bissap_userbundle_user_typeE, #bissap_userbundle_user_genreE{
+	text-align: center;
+}
+
+.error_register{
+	color:red;
+}
+
+.padding_loginOrga{
+	width: 500px;
+	margin: auto;
+}
+
+.items_liste_benev{
+
+font-size: 25px;
+font-style:italic;
+color: rgb(230, 143, 29);
+text-align:center;
+background-color: rgb(114, 114, 125);
+padding-top: 20px;
+padding-bottom: 10px
+}
+
+.select_benev{
+	background-color: rgb(55, 58, 60);
+	padding: 10px;
+}
+
+.item_select{
+	color:white;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+#bissap_userbundle_orga_submit{
+	margin-left: 30px;
+}
+
+.table{
+	background-color: rgb(55, 58, 60);
+    color: white;
+}
+table>tbody>tr:not(.tr_table):hover{
+	background-color: rgb(114, 114, 125);
+}
+.delete_account{
+	color:white;
+}
+.a_delete_user{
+	color: red;
+    background-color: black;
+}
+.div_delete_user{
+    position:absolute;
+    bottom:0px;
+    right:25%;
+    left:50%;
+    margin-left:-150px;
+}
+
+/*PAGINATION*/
+
+div.pagination{
+	margin:0
+}
+
+div.pagination .current{
+	text-align:center;
+	box-shadow:none;
+	text-shadow:none;
+	float:none;
+	background-color:#35353F;
+	/*padding:4px 6px;*/
+	min-width:30px;
+	/*height:30px;*/
+	margin-right:8px;
+	margin-left:8px;
+	padding-top: 8px;
+	padding-bottom: 10px;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+
+div.pagination a, div.pagination span, div.pagination span a{
+	display:inline-block;
+	text-align:center
+}
+
+/*div.pagination > a, div.pagination > span > a{*/
+div.pagination > a, div.pagination > span > a{
+/*	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;*/
+	min-width:20px;
+	/*height:20px;*/
+	background-color: #0E0E11;
+
+	/*line-height:22px*/
+}
+div.pagination>span {
+	/*padding:2px 4px;*/
+	/*min-width:20px;*/
+	/*height:30px;*/
+	/*background-color: #0E0E11;*/
+}
+
+div.pagination a, div.pagination .current {
+    border-color: #DB9935;
+	border-width:1px;
+	border-style: solid;
+    color: #FFF;
+    text-decoration: none;
+}
+
+div.pagination > a, div.pagination > span > a{
+	padding: 8px 16px 8px 16px;}
+
+.pagination{
+	border-radius: 4px;
+}
+
+.navigation{
+	text-align: center;
+}
+/*Corresctif modal*/
+
+.modal-backdrop {
+  z-index: -1;
+}
+.modal-presentation{
+	margin-top: 250px;
+}
+.modal-content-presentation{
+	height: 200px;
+	color:white;
+	padding:10px;
+}
+.modal-content-qfn{
+	color:white;
+	padding:10px;
+}
+@media only screen and (min-width:440px){
+	#departementTable{
+		left:40%;
+	}
+	body{
+		background-size: 100%;
+	}
+
+}
+
+
+

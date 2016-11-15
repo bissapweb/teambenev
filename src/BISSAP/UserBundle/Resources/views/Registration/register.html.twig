@@ -1,0 +1,78 @@
+
+
+
+{% trans_default_domain 'FOSUserBundle' %}
+{% block body %}
+ <link rel="stylesheet"
+            href="{{ asset('assets/vendor/bootstrap/main_v1.css') }}">
+        <link rel="stylesheet"
+            href="{{ asset('bundles/bissapcore/css/main-teamBenev.css') }}">
+{% block fos_user_content %}
+{{ form_start(form,{action:path('fos_user_registration_register',{'type': 'agent'})}) }}
+
+<div class="formRegister">
+          <ul class="ul__register">
+            <li class="formLogin__column padding__FormLogin">
+              <a class="btn btn-block btn-social btn-facebook" href="{{ path('bissap_oauth_connect') }}"><i class="fa fa-facebook" aria-hidden="true"></i>
+S'inscrire via Facebook</a>
+            </li>
+            <li class="li_register"></li>
+            <li class="formLogin__column">
+  
+  <form name="fos_user_registration_form" method="post" action="/benevoles/web/app_dev.php/inscription/agent" class="form-horizontal">
+
+  <div id="fos_user_registration_form">
+  		<div class="form-group">
+  			<label class="control-label required" for="fos_user_registration_form_email">Email</label>
+  				<div class="">
+  					<input id="fos_user_registration_form_email" name="fos_user_registration_form[email]" required="required" class="input__registerbox form-control" type="email">
+  				</div>
+  		</div>
+      <span class="error_register">{{ form_errors(form.email) }}</span>
+
+  		<div class="form-group">
+  			<label class="control-label required" for="fos_user_registration_form_username">Nom d'utilisateur</label>
+  				<div class="">
+  					<input id="fos_user_registration_form_username" name="fos_user_registration_form[username]" required="required" maxlength="255" pattern=".{2,}" class="input__registerbox form-control" type="text">
+  				</div>
+  		</div>
+      <span class="error_register">{{ form_errors(form.username) }}</span>
+  		<div class="form-group">
+  			<label class="control-label required" for="fos_user_registration_form_plainPassword_first">Mot de passe</label>
+  				<div class="">
+  					<input id="fos_user_registration_form_plainPassword_first" name="fos_user_registration_form[plainPassword][first]" required="required" class="input__registerbox form-control" type="password">
+  				</div>
+  		</div>
+  		<div class="form-group">
+  			<label class="control-label required" for="fos_user_registration_form_plainPassword_second">Vérification</label>
+  				<div class="">
+  					<input id="fos_user_registration_form_plainPassword_second" name="fos_user_registration_form[plainPassword][second]" required="required" class="input__registerbox form-control" type="password">
+  				</div>
+  		</div>
+  		<div class="form-group">
+  			<label class="control-label required" for="fos_user_registration_form_firstname">Genre</label>
+  				<div class="">
+  					{{ form_widget(form.sex) }}
+  				</div>
+  		</div>
+  		<div class="form-group">
+  		<div class="">
+  			
+  		</div>
+  		<div class="center">
+  			<button type="submit" id="fos_user_registration_form_Enregistrer" name="fos_user_registration_form[Enregistrer]" class="registerbox__submit bc-btn btn">Enregistrer
+  			</button>
+  		</div>
+  	</div>
+  				    	{{ form_widget(form._token) }}
+
+</div>
+</form>
+</li>
+</ul>
+</div>
+{{ ERR }}
+    
+
+{% endblock fos_user_content %}
+{% endblock body %}

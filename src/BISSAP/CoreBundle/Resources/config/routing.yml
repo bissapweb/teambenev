@@ -1,0 +1,4 @@
+bissap_coreBundle_index:
+    path:     /index
+    host:     www.teambenev.local
+    defaults: { _controller: BISSAPCoreBundle:Default:index }

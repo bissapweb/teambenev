@@ -1,0 +1,47 @@
+bissap_orga:
+    resource: "@BISSAPOrgaBundle/Resources/config/routing.yml"
+    prefix:   /
+
+bissap_core:
+    resource: "@BISSAPCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+bissap_user:
+    resource: "@BISSAPUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+# app:
+#     resource: "@AppBundle/Controller/"
+#     type:     annotation
+
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+hwi_oauth_connect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+    prefix:   /connect
+
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix:   /login
+
+facebook_login:
+    path: /login/check-facebook
+
+bissap_oauth_connect:
+    path: /connect/facebook
+
+# redirecting the root
+root_orga:
+    path: /
+    host:     www.orga.teambenev.local
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: bissap_orgaBundle_index
+root_benev:
+    path: /
+    host:     www.teambenev.local
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: bissap_coreBundle_index

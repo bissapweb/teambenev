@@ -1,0 +1,20 @@
+# Mercurial configuration file
+# See hgrc(5) for more information
+
+# User Interface settings
+[ui]
+username= sebastien <kontact.bissap@gmail.com>
+editor=vim
+merge=meld
+
+# Enabled extensions
+[extensions]
+hgext.gpg=
+hgext.convert=
+
+# GPG extension settings
+[gpg]
+#key=<your private gpg key>
+[paths]
+default = https://bitbucket.org/bissap_web/TeamBenev
+

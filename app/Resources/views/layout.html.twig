@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+    <head>
+        {# ... #}
+        <meta name="viewport" content="user-scalable=no, height=device-height
+  , width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.min.css') }}" />
+        <link rel="stylesheet"
+            href="{{ asset('assets/vendor/bootstrap/main_v1.css') }}">
+        <link rel="stylesheet"
+            href="{{ asset('bundles/bissapcore/css/main-teamBenev.css') }}">
+     <script src="{{ asset('assets/vendor/jquery/dist/jquery.js') }}"></script>
+     <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.js') }}"></script>
+    </head>
+<body>
+<div class="container">
+    
+    <nav class="navbar navbar-default ">
+    
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Team Benev</a>
+          </div>
+          <div style="height: 1px;" aria-expanded="false" id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+                <li>
+                <a data-toggle="modal" data-target="#modalQfn" href="#">
+                   Que faisons nous?
+                      </a></li>
+              <li><a data-toggle="modal" data-target="#modalContact" href="#">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            <li>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <a href="" >
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ app.user.username }}</a>
+                {% endif %}
+
+            </li>
+            <li>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {% if is_granted('ROLE_BENEV') %}
+                <a href="{{ path('fos_user_security_logout')}}" >
+            {% else %}
+                <a href="{{ path('fos_orga_security_logout')}}" >
+            {% endif %}  
+                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>  Deconnexion        
+                </a>
+            {% endif %}
+            </li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      
+    </nav>
+
+</div>
+  {% block body %}
+  {% endblock %}
+
+<!-- Modal Qfn -->
+    
+        <div class="modal fade" id="modalQfn" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modal-content-qfn">
+                    <div id="">
+<div class="divCadreIndex">En quleques mots...</div>
+
+<div class="divCadreIndex">Créer en 2016, "Team Benev" est une interface qui permet au benevoles et aux organsiateurs d'evenement dans le milieu du spectacle de se mettre facilement en relation...</div>
+
+<div class="divCadreIndex">Attiré à la fois par l'evenementiel la musique et le develeoppement d'application web ...??? et Seb fondateur du site "Team Benev", ont mis leurs compètences respectives en commun afin de donner naissance à ce projet</div>
+
+<div class="divCadreIndex">_________</div>
+
+<div class="divCadreIndex">Avec plus de ??? benevoles inscrit sur le site, et ??? Partenaires "Team Benev" deviens un outils indispensable pour la gestion d'evenement de type Festival et Concert </div>
+
+<div class="divCadreIndex">En plus de facilité la relation entre benevoles et organisateur, L'obejectif de "Team Benev" est de participer activement à la mulitiplcation et l'encrage d'evenement musical en France</div>
+
+<div class="divCadreIndex">Vous retrouverai prochainement sur ce site des infos et des liens concernant...les futures Concert et Festival en France...</div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+<!-- Modal Contact -->
+    
+        <div class="modal fade" id="modalContact" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modal-content-qfn">
+                    <div id="">
+<div class="divCadreIndex">PIGUET Sébastien </div>
+<div class="divCadreIndex">Mail: kontact.bissap@gmail.com </div>
+<div class="divCadreIndex">Tel : 0658778746 </div>
+
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+
+</body>	
+</html>

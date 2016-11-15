@@ -1,0 +1,25 @@
+fos_user_security_login:
+    path: /connexion
+    defaults : { _controller :BISSAPUserBundle:Security:login }
+
+fos_orga_security_login:
+    path: /orga/connexionOrga
+    defaults : { _controller :BISSAPUserBundle:Security:loginOrga }
+
+fos_user_security_check:
+    path: /connexion_check
+    defaults : { _controller :FOSUserBundle:Security:check }
+
+fos_orga_security_check:
+    path: /orga/connexion_check
+    defaults : { _controller :FOSUserBundle:Security:check }
+
+fos_user_security_logout:
+    path: /deconnexion
+    defaults : { _controller :BISSAPUserBundle:Security:logout }
+
+fos_orga_security_logout:
+    path: /orga/deconnexion
+    defaults : { _controller :BISSAPUserBundle:Security:logout }
+
+
