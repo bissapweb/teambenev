@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: team_benev
+    database_user: root
+    database_password: seb666
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: fdcbfe2004051cfde0803754bb1c6904a2acf509
+    facebook_app_id: 1613484808944721
+    facebook_app_secret: e56aa275d03a5746017107b4c5e304b7
